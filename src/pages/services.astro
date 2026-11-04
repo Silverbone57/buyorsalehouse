@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { coreCapabilities, siteInfo } from '../data/siteData.js';
+
+const investorPillars = [
+  {
+    tag: 'Joint Ventures',
+    title: 'Landowner & Developer Partnerships',
+    description:
+      'Own a prime parcel of land but don’t want to manage zoning, architectural plans, or construction alone? We structure clean Joint Venture (JV) agreements where you contribute the land and we deliver the development execution.',
+  },
+  {
+    tag: 'Value-Add Commercial',
+    title: 'Multi-Family & Mixed-Use Acquisitions',
+    description:
+      'We acquire and reposition 4-to-50+ unit residential buildings and neighborhood commercial centers—unlocking forced appreciation through disciplined renovation and active management.',
+  },
+  {
+    tag: 'Co-Investment',
+    title: 'Private Deal Flow & Co-Investing',
+    description:
+      'For accredited investors and family offices looking for direct real estate exposure without day-to-day landlord headaches, we offer transparent project-level co-investment opportunities.',
+  },
+];
+---
+
+<Layout title={`Services, Commercial & Investors | ${siteInfo.brand}`}>
+  <!-- Header Banner -->
+  <section class="bg-forest text-stone-paper border-b-2 border-ink py-14 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-bold uppercase tracking-widest text-stone-warm/75 mb-2">
+        Full-Spectrum Real Estate Operations
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight max-w-3xl">
+        Services, Commercial Deals & Development Partnerships
+      </h1>
+      <p class="text-stone-warm/85 max-w-2xl text-base sm:text-lg mt-4 leading-relaxed">
+        We combine on-the-ground residential speed with institutional-grade commercial and land development execution.
+      </p>
+    </div>
+  </section>
+
+  <!-- Full Breakdown of 3 Core Capabilities -->
+  <section class="py-16 bg-stone-paper border-b border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-forest mb-2">
+          What We Do
+        </p>
+        <h2 class="font-display text-3xl font-extrabold text-ink">
+          Three Core Divisions Under One Roof
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {coreCapabilities.map((cap) => (
+          <div class="border-2 border-ink bg-white p-8 flex flex-col justify-between shadow-[6px_6px_0px_0px_#141514]">
+            <div>
+              <div class="flex items-center justify-between mb-6 pb-4 border-b border-stone-border">
+                <span class="font-display text-4xl font-extrabold text-forest">
+                  {cap.number}
+                </span>
+                <span class="text-xs font-bold uppercase tracking-wider bg-stone-warm px-3 py-1 border border-ink">
+                  {cap.audience}
+                </span>
+              </div>
+
+              <h3 class="font-display text-2xl font-bold text-ink mb-3">
+                {cap.title}
+              </h3>
+
+              <p class="text-sm text-ink-muted leading-relaxed mb-6">
+                {cap.description}
+              </p>
+
+              <ul class="space-y-2.5 mb-8 border-t border-stone-border pt-5">
+                {cap.highlights.map((h) => (
+                  <li class="text-sm font-medium text-ink flex items-start gap-2.5">
+                    <span class="text-forest font-bold">■</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <a
+              href={cap.linkHref}
+              class="block w-full text-center bg-forest text-white py-3.5 text-xs font-bold uppercase tracking-widest border border-ink hover:bg-ink transition-colors"
+            >
+              {cap.linkText} →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial & Joint-Venture Section -->
+  <section class="py-20 bg-stone-warm border-b border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest bg-forest text-white px-3 py-1">
+          For Investors & Landowners
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-ink mt-3">
+          Commercial Acquisitions & Land Development
+        </h2>
+        <p class="text-ink-muted mt-3 text-base leading-relaxed">
+          Just like major regional developers, we work directly with landowners, commercial brokers, and private capital partners to turn underutilized properties into high-performing assets.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {investorPillars.map((pillar) => (
+          <div class="bg-stone-paper border-2 border-ink p-7">
+            <span class="text-xs font-bold uppercase tracking-widest text-forest block mb-2">
+              {pillar.tag}
+            </span>
+            <h3 class="font-display text-xl font-extrabold text-ink mb-3">
+              {pillar.title}
+            </h3>
+            <p class="text-sm text-ink-muted leading-relaxed">
+              {pillar.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 border-2 border-ink bg-ink text-stone-paper p-8 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <h3 class="font-display text-2xl font-bold text-white">
+            Have a Commercial Deal or Development Site to Discuss?
+          </h3>
+          <p class="text-sm text-stone-warm/80 mt-1">
+            Speak directly with our principals about acquisitions, joint ventures, or private capital partnerships.
+          </p>
+        </div>
+        <a
+          href="/contact?interest=invest"
+          class="bg-forest text-white px-7 py-4 text-xs font-bold uppercase tracking-widest border border-white/40 hover:bg-stone-paper hover:text-ink transition-colors shrink-0"
+        >
+          Schedule a Principal Call →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

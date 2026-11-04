@@ -1,0 +1,274 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteInfo } from '../data/siteData.js';
+
+const steps = [
+  {
+    step: '01',
+    title: 'Share Your Property Details',
+    description:
+      'Fill out the quick form on this page or call us directly. Tell us the address, general condition, and your ideal timeline.',
+  },
+  {
+    step: '02',
+    title: 'Receive a Clear, Written Offer',
+    description:
+      'We evaluate the property and present a straightforward, no-obligation cash offer—or a joint-venture development proposal if you own high-potential land.',
+  },
+  {
+    step: '03',
+    title: 'Close on Your Schedule',
+    description:
+      'Pick the closing date that works for you—as fast as 10 to 14 days, or take extra time to relocate. No repairs, no showings, and zero agent commissions.',
+  },
+];
+---
+
+<Layout title={`Sell Your House or Land Direct | ${siteInfo.brand}`}>
+  <!-- Header Banner -->
+  <section class="bg-forest text-stone-paper border-b-2 border-ink py-14 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-bold uppercase tracking-widest text-stone-warm/75 mb-2">
+        Direct Acquisition Program • Homeowners & Landowners
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight max-w-3xl">
+        Sell Your House or Land Directly—No Repairs, No Commissions.
+      </h1>
+      <p class="text-stone-warm/85 max-w-2xl text-base sm:text-lg mt-4 leading-relaxed">
+        Whether you have an inherited property, a house needing major repairs, a rental with tenants, or a parcel of land ready for development, we buy directly with clear terms.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content + Seller Intake Form -->
+  <section class="py-16 bg-stone-paper border-b border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <!-- Left Column: How It Works + Comparison -->
+      <div class="lg:col-span-6 space-y-12">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-forest mb-2">
+            Simple 3-Step Process
+          </p>
+          <h2 class="font-display text-3xl font-extrabold text-ink">
+            How Selling Direct To Us Works
+          </h2>
+          <div class="mt-6 space-y-6">
+            {steps.map((s) => (
+              <div class="border-2 border-ink bg-white p-6 flex gap-5">
+                <div class="font-display text-3xl font-extrabold text-forest shrink-0">
+                  {s.step}
+                </div>
+                <div>
+                  <h3 class="font-display text-lg font-bold text-ink">{s.title}</h3>
+                  <p class="text-sm text-ink-muted mt-1 leading-relaxed">{s.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Comparison Box -->
+        <div class="border-2 border-ink bg-stone-warm p-6 sm:p-8">
+          <h3 class="font-display text-xl font-extrabold text-ink mb-4">
+            Why Owners Sell Direct Instead of Listing Traditionally
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+            <div class="bg-white p-5 border border-ink">
+              <p class="font-bold text-forest uppercase tracking-wider text-xs mb-3">
+                Selling Direct to {siteInfo.brand}
+              </p>
+              <ul class="space-y-2 text-ink font-medium">
+                <li>✓ 0% Commissions or Agent Fees</li>
+                <li>✓ We Buy 100% As-Is (No Repairs)</li>
+                <li>✓ No Open Houses or Strangers</li>
+                <li>✓ Guaranteed Cash Closing in 10–14 Days</li>
+              </ul>
+            </div>
+
+            <div class="bg-stone-paper p-5 border border-stone-border text-ink-muted">
+              <p class="font-bold text-ink uppercase tracking-wider text-xs mb-3">
+                Traditional MLS Listing
+              </p>
+              <ul class="space-y-2">
+                <li>✕ 5%–6% Realtor Commissions</li>
+                <li>✕ Expensive Inspection Repairs</li>
+                <li>✕ Months of Showings & Uncertainty</li>
+                <li>✕ Buyer Mortgage Fall-Through Risk</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Seller Offer Request Form -->
+      <div class="lg:col-span-6">
+        <div class="border-2 border-ink bg-white p-8 sm:p-10 shadow-[8px_8px_0px_0px_#163024]">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest bg-forest text-white px-3 py-1 mb-3">
+            No-Obligation Valuation
+          </span>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-ink">
+            Request Your Cash Offer or Land Evaluation
+          </h2>
+          <p class="text-sm text-ink-muted mt-2 mb-6">
+            Complete the property details below. Our acquisitions team will review and reach out within 24 hours.
+          </p>
+
+          <form id="seller-form" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                Property Street Address *
+              </label>
+              <input
+                type="text"
+                name="address"
+                required
+                placeholder="123 Main St, City, State, ZIP"
+                class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                  Property Type *
+                </label>
+                <select
+                  name="propertyType"
+                  class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+                >
+                  <option>Single-Family Home</option>
+                  <option>Multi-Family (2–10+ Units)</option>
+                  <option>Vacant Land / Development Lot</option>
+                  <option>Townhouse / Condo</option>
+                  <option>Commercial Building</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                  Current Condition
+                </label>
+                <select
+                  name="condition"
+                  class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+                >
+                  <option>Good / Move-In Ready</option>
+                  <option>Needs Minor Cosmetic Updates</option>
+                  <option>Needs Major Repairs / Full Rehab</option>
+                  <option>Vacant Land / Tear-Down</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                  Ideal Timeline to Sell
+                </label>
+                <select
+                  name="timeline"
+                  class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+                >
+                  <option>ASAP (Within 14 Days)</option>
+                  <option>Within 30 Days</option>
+                  <option>1 to 3 Months</option>
+                  <option>Exploring Joint-Venture / Flexible</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                  Asking Price (Optional)
+                </label>
+                <input
+                  type="text"
+                  name="askingPrice"
+                  placeholder="e.g. $450,000 or Open to Offer"
+                  class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-stone-border">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                  Your Full Name *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Jane Smith"
+                  class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  placeholder="(555) 123-4567"
+                  class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                Email Address *
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                Additional Notes (Optional)
+              </label>
+              <textarea
+                name="notes"
+                rows="3"
+                placeholder="Tell us anything else about the property, tenants, or your goals..."
+                class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-forest text-white py-4 font-bold text-sm uppercase tracking-widest border border-ink hover:bg-ink transition-colors"
+            >
+              Submit Property for Direct Offer →
+            </button>
+
+            <div
+              id="seller-success"
+              class="hidden p-4 bg-forest-tint border border-forest text-forest text-sm font-semibold"
+            >
+              ✓ Thank you! Your property details have been recorded. Our acquisitions team will contact you within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('seller-form');
+    const success = document.getElementById('seller-success');
+    if (form && success) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        success.classList.remove('hidden');
+        form.reset();
+      });
+    }
+  </script>
+</Layout>

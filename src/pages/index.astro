@@ -1,0 +1,381 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { properties, coreCapabilities, siteInfo } from '../data/siteData.js';
+
+const featuredProperties = properties.filter((p) => p.featured);
+---
+
+<Layout>
+  <!-- HERO SECTION -->
+  <section class="border-b border-ink bg-stone-paper">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Column: Bold Headline + Actions -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-forest-tint border border-forest text-forest text-xs font-bold uppercase tracking-widest">
+            <span class="w-2 h-2 bg-forest inline-block"></span>
+            {siteInfo.groupName} • Buy • Sell Direct • Invest
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-6xl lg:text-[64px] font-extrabold text-ink tracking-tight leading-[1.05]">
+            Real Estate Built on <span class="text-forest underline decoration-2 underline-offset-8">Clarity</span>, Speed & Value.
+          </h1>
+
+          <p class="text-lg sm:text-xl text-ink-muted max-w-2xl leading-relaxed">
+            Whether you need a direct cash offer for your current house, a move-in-ready home for your family, or a high-conviction commercial investment—we handle every transaction under one roof without the corporate bloat.
+          </p>
+
+          <!-- Primary CTA Buttons -->
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a
+              href="/properties"
+              class="bg-forest text-stone-paper px-7 py-4 text-sm sm:text-base font-bold border border-ink hover:bg-ink transition-colors"
+            >
+              Browse Properties →
+            </a>
+            <a
+              href="/sell"
+              class="bg-stone-warm text-ink px-7 py-4 text-sm sm:text-base font-bold border border-ink hover:bg-forest hover:text-white transition-colors"
+            >
+              Sell Your House Direct
+            </a>
+            <a
+              href="/services"
+              class="px-5 py-4 text-sm sm:text-base font-bold text-ink hover:text-forest underline underline-offset-4"
+            >
+              Investor & Land Deals
+            </a>
+          </div>
+
+          <!-- Key Trust Metrics -->
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-stone-border">
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-ink">10–14 Days</p>
+              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">Direct Cash Closings</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-forest">100% Turnkey</p>
+              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">Inspected Family Homes</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-ink">Zero Fees</p>
+              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">When Selling Direct To Us</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Architectural Hero Image Box -->
+        <div class="lg:col-span-5">
+          <div class="relative border-2 border-ink bg-stone-warm p-3 shadow-[8px_8px_0px_0px_#163024]">
+            <div class="aspect-[4/5] overflow-hidden border border-ink bg-ink relative">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"
+                alt="Modern Architectural Residence"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute bottom-0 inset-x-0 bg-ink/90 backdrop-blur-sm text-stone-paper p-5 border-t border-white/20">
+                <div class="flex items-center justify-between text-xs uppercase tracking-widest text-stone-warm/75 mb-1">
+                  <span>{siteInfo.groupName}</span>
+                  <span class="text-emerald-300 font-bold">Portfolio Coming Soon</span>
+                </div>
+                <p class="font-display font-bold text-lg text-white">Residential, Cash Offers & Commercial</p>
+                <p class="text-xs text-stone-warm/80 mt-0.5">New listings & off-market opportunities launching soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-TRACK SELECTOR BAR ("WHO ARE YOU?") -->
+  <section class="bg-forest text-stone-paper border-b border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <p class="text-xs uppercase tracking-widest text-stone-warm/70 font-bold">
+            Choose Your Path
+          </p>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">
+            Three Ways We Work With You
+          </h2>
+        </div>
+        <p class="text-sm text-stone-warm/80 max-w-md">
+          Unlike cluttered property portals, we organize our services around your exact goal. Pick the track that fits you:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Track 1: Sell Fast -->
+        <a
+          href="/sell"
+          class="group bg-stone-paper text-ink p-7 border-2 border-ink hover:bg-stone-warm transition-all flex flex-col justify-between"
+        >
+          <div>
+            <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-forest text-white mb-4">
+              Track 01 • Sellers
+            </span>
+            <h3 class="font-display text-xl font-extrabold text-ink group-hover:text-forest transition-colors">
+              I Want to Sell My House or Land Fast
+            </h3>
+            <p class="text-sm text-ink-muted mt-3 leading-relaxed">
+              Skip the repairs, open houses, and 6% realtor commissions. Get a straightforward cash offer or partner with us on your land.
+            </p>
+          </div>
+          <span class="mt-6 inline-flex items-center font-bold text-sm text-forest group-hover:translate-x-1 transition-transform">
+            Request an Offer →
+          </span>
+        </a>
+
+        <!-- Track 2: Buy / Browse -->
+        <a
+          href="/properties"
+          class="group bg-stone-paper text-ink p-7 border-2 border-ink hover:bg-stone-warm transition-all flex flex-col justify-between"
+        >
+          <div>
+            <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-ink text-white mb-4">
+              Track 02 • Buyers & Families
+            </span>
+            <h3 class="font-display text-xl font-extrabold text-ink group-hover:text-forest transition-colors">
+              I’m Looking to Buy or Rent a Property
+            </h3>
+            <p class="text-sm text-ink-muted mt-3 leading-relaxed">
+              Explore our curated collection of renovated single-family homes, new townhomes, and commercial spaces ready for immediate occupancy.
+            </p>
+          </div>
+          <span class="mt-6 inline-flex items-center font-bold text-sm text-forest group-hover:translate-x-1 transition-transform">
+            View All Properties →
+          </span>
+        </a>
+
+        <!-- Track 3: Investors / Commercial -->
+        <a
+          href="/services"
+          class="group bg-stone-paper text-ink p-7 border-2 border-ink hover:bg-stone-warm transition-all flex flex-col justify-between"
+        >
+          <div>
+            <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-forest-light text-white mb-4">
+              Track 03 • Investors & Commercial
+            </span>
+            <h3 class="font-display text-xl font-extrabold text-ink group-hover:text-forest transition-colors">
+              I’m an Investor or Land Partner
+            </h3>
+            <p class="text-sm text-ink-muted mt-3 leading-relaxed">
+              Partner with us on multi-family acquisitions, commercial buildings, joint-venture development, or off-market deal flow.
+            </p>
+          </div>
+          <span class="mt-6 inline-flex items-center font-bold text-sm text-forest group-hover:translate-x-1 transition-transform">
+            Explore Commercial & JV →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROPERTIES SECTION -->
+  <section class="py-20 border-b border-ink bg-stone-paper">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-forest mb-2">
+            Upcoming Portfolio • {siteInfo.shortGroup}
+          </p>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
+            Featured Listings (Coming Soon)
+          </h2>
+        </div>
+        <a
+          href="/properties"
+          class="inline-flex items-center justify-center bg-ink text-stone-paper px-6 py-3 text-sm font-bold hover:bg-forest transition-colors self-start sm:self-auto"
+        >
+          View Portfolio Preview →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {featuredProperties.map((property) => (
+          <article class="border-2 border-ink bg-white flex flex-col justify-between shadow-[6px_6px_0px_0px_#141514] hover:shadow-[8px_8px_0px_0px_#163024] transition-all">
+            <div>
+              <div class="aspect-[16/10] overflow-hidden border-b-2 border-ink relative bg-stone-warm">
+                <img
+                  src={property.image}
+                  alt={property.title}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute top-3 left-3 flex gap-2">
+                  <span class="bg-ink text-white text-xs font-bold uppercase tracking-wider px-3 py-1">
+                    {property.category}
+                  </span>
+                  <span class="bg-forest text-white text-xs font-bold uppercase tracking-wider px-3 py-1">
+                    {property.status}
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-baseline justify-between gap-2 mb-2">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-ink-muted">
+                    {property.location}
+                  </span>
+                  <span class="font-display text-xl font-extrabold text-forest">
+                    {property.price}
+                  </span>
+                </div>
+
+                <h3 class="font-display text-xl font-bold text-ink mb-3">
+                  {property.title}
+                </h3>
+
+                <p class="text-sm text-ink-muted leading-relaxed mb-5">
+                  {property.summary}
+                </p>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 pt-4 border-t border-stone-border bg-stone-paper/50">
+              <div class="grid grid-cols-3 gap-2 text-xs font-bold text-ink mb-4">
+                <div class="bg-stone-warm px-2.5 py-1.5 border border-stone-border text-center">
+                  {property.specs.beds}
+                </div>
+                <div class="bg-stone-warm px-2.5 py-1.5 border border-stone-border text-center">
+                  {property.specs.baths}
+                </div>
+                <div class="bg-stone-warm px-2.5 py-1.5 border border-stone-border text-center">
+                  {property.specs.sqft}
+                </div>
+              </div>
+
+              <a
+                href={`/contact?property=${encodeURIComponent(property.title)}`}
+                class="block w-full text-center bg-forest text-white py-3 text-xs font-bold uppercase tracking-widest border border-ink hover:bg-ink transition-colors"
+              >
+                Get Notified / Inquire Early
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE CAPABILITIES (ARCHITECTURAL 3-COLUMN GRID) -->
+  <section class="py-20 bg-stone-warm border-b border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14">
+        <p class="text-xs font-bold uppercase tracking-widest text-forest mb-2">
+          Core Capabilities
+        </p>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
+          Built to Handle Every Side of a Real Estate Transaction
+        </h2>
+        <p class="text-ink-muted mt-3 text-base sm:text-lg">
+          Inspired by full-spectrum real estate developers and modernized for speed, transparency, and direct execution.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {coreCapabilities.map((item) => (
+          <div class="border-t-2 border-ink pt-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-display text-3xl font-extrabold text-forest">
+                  {item.number}
+                </span>
+                <span class="text-xs font-bold uppercase tracking-wider bg-stone-paper px-3 py-1 border border-ink">
+                  {item.audience}
+                </span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-ink mb-3">
+                {item.title}
+              </h3>
+              <p class="text-sm text-ink-muted leading-relaxed mb-6">
+                {item.description}
+              </p>
+              <ul class="space-y-2 mb-8">
+                {item.highlights.map((pt) => (
+                  <li class="text-sm font-medium text-ink flex items-start gap-2">
+                    <span class="text-forest font-bold">■</span>
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <a
+              href={item.linkHref}
+              class="inline-flex items-center font-bold text-sm text-forest hover:text-ink underline underline-offset-4"
+            >
+              {item.linkText} →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK DIRECT INQUIRY SECTION -->
+  <section class="py-20 bg-stone-paper">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-2 border-ink bg-white p-8 sm:p-12 shadow-[8px_8px_0px_0px_#163024] grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 space-y-4">
+          <span class="text-xs font-bold uppercase tracking-widest text-forest bg-forest-tint px-3 py-1 border border-forest">
+            Direct Response
+          </span>
+          <h2 class="font-display text-3xl font-extrabold text-ink tracking-tight">
+            Have a Property to Sell or Looking for Something Specific?
+          </h2>
+          <p class="text-ink-muted text-sm sm:text-base leading-relaxed">
+            Tell us what you need—whether it’s a no-obligation cash offer on a house you own, a family home in a specific neighborhood, or a commercial parcel. We respond within 24 hours.
+          </p>
+          <div class="pt-2 space-y-1 text-sm">
+            <p class="font-bold text-ink">Group: <span class="text-forest">{siteInfo.groupName}</span></p>
+            <p class="text-ink-muted">Email: {siteInfo.email}</p>
+          </div>
+        </div>
+
+        <form action="/contact" method="get" class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">Your Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="John Doe"
+              class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">Phone or Email</label>
+            <input
+              type="text"
+              name="contact"
+              required
+              placeholder="(555) 000-0000"
+              class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+            />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">How Can We Help?</label>
+            <select
+              name="interest"
+              class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
+            >
+              <option value="sell">I want a cash offer / to sell my property</option>
+              <option value="buy">I am looking to buy or rent a home</option>
+              <option value="invest">I am interested in commercial / investment deals</option>
+              <option value="joint-venture">Land development / Joint Venture partnership</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <button
+              type="submit"
+              class="w-full bg-forest text-white py-4 font-bold text-sm uppercase tracking-widest border border-ink hover:bg-ink transition-colors"
+            >
+              Continue to Direct Inquiry →
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

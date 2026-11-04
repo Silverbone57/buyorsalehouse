@@ -1,0 +1,256 @@
+---
+import { siteInfo } from '../data/siteData.js';
+
+const {
+  title = `${siteInfo.brand} | Modern Real Estate, Direct Sales & Development`,
+  description = siteInfo.tagline,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Properties', href: '/properties' },
+  { name: 'Sell Your Property', href: '/sell' },
+  { name: 'Services & Investors', href: '/services' },
+  { name: 'About & Contact', href: '/contact' },
+];
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-stone-paper text-ink font-sans antialiased selection:bg-forest selection:text-white min-h-screen flex flex-col">
+    <!-- Top Utility Bar -->
+    <div class="bg-forest text-stone-paper text-xs border-b border-forest-light">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap justify-between items-center gap-2">
+        <p class="font-medium tracking-wide uppercase text-[11px] text-stone-warm/90">
+          {siteInfo.groupName} • Residential • Direct Cash Purchases • Commercial
+        </p>
+        <div class="flex items-center gap-6">
+          <span class="font-medium text-stone-warm/90">
+            New Portfolio Listings Launching Soon
+          </span>
+          <a href="/sell" class="hidden sm:inline-block underline font-semibold text-white">
+            Request a Cash Offer →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Architectural Navigation -->
+    <header class="sticky top-0 z-50 bg-stone-paper/95 backdrop-blur-md border-b border-ink">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <!-- Brand Logo -->
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 bg-forest text-stone-paper flex items-center justify-center font-display font-extrabold text-lg tracking-tighter border border-ink group-hover:bg-ink transition-colors">
+            ER
+          </div>
+          <div>
+            <span class="font-display font-extrabold text-xl tracking-tight text-ink block leading-none">
+              BuyOrSale<span class="text-forest">House</span>
+            </span>
+            <span class="text-[10px] uppercase tracking-widest text-ink-muted font-semibold block mt-1">
+              {siteInfo.groupName}
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => {
+            const isActive =
+              currentPath === link.href ||
+              (link.href !== '/' && currentPath.startsWith(link.href));
+            return (
+              <a
+                href={link.href}
+                class={`text-sm font-semibold transition-colors py-1 border-b-2 ${
+                  isActive
+                    ? 'border-forest text-forest'
+                    : 'border-transparent text-ink hover:text-forest hover:border-stone-border'
+                }`}
+              >
+                {link.name}
+              </a>
+            );
+          })}
+        </nav>
+
+        <!-- Primary Action CTA -->
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="/sell"
+            class="bg-forest text-stone-paper px-5 py-2.5 text-sm font-semibold border border-ink hover:bg-ink transition-colors"
+          >
+            Get Offer / Sell Fast
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Toggle Navigation"
+          class="md:hidden p-2.5 border border-ink bg-stone-warm text-ink hover:bg-forest hover:text-white transition-colors"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-ink bg-stone-paper px-4 pt-4 pb-6 space-y-3">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block py-2.5 px-3 text-base font-semibold text-ink hover:bg-stone-warm border-l-2 border-transparent hover:border-forest"
+          >
+            {link.name}
+          </a>
+        ))}
+        <div class="pt-3 border-t border-stone-border">
+          <a
+            href="/sell"
+            class="block w-full text-center bg-forest text-stone-paper py-3 font-semibold border border-ink"
+          >
+            Get a Direct Cash Offer
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Page Content -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Architectural High-Contrast Footer -->
+    <footer class="bg-ink text-stone-paper border-t-2 border-ink mt-20">
+      <!-- Pre-Footer Callout Banner -->
+      <div class="border-b border-white/15 bg-forest">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <p class="text-xs uppercase tracking-widest text-stone-warm/80 font-semibold mb-2">
+              Ready to Make a Move?
+            </p>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              Whether buying a home, selling as-is, or partnering on land—let’s talk directly.
+            </h2>
+          </div>
+          <div class="flex flex-wrap gap-4 shrink-0">
+            <a
+              href="/sell"
+              class="bg-stone-paper text-ink px-6 py-3.5 text-sm font-bold border border-ink hover:bg-stone-warm transition-colors"
+            >
+              Sell Your Property
+            </a>
+            <a
+              href="/properties"
+              class="bg-transparent text-white px-6 py-3.5 text-sm font-bold border border-white hover:bg-white/10 transition-colors"
+            >
+              Browse Listings
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Columns -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-forest text-stone-paper flex items-center justify-center font-display font-extrabold text-base border border-white/30">
+              ER
+            </div>
+            <div>
+              <span class="font-display font-extrabold text-xl tracking-tight text-white block leading-none">
+                BuyOrSaleHouse
+              </span>
+              <span class="text-[10px] uppercase tracking-widest text-stone-warm/70 font-semibold block mt-1">
+                {siteInfo.groupName}
+              </span>
+            </div>
+          </div>
+          <p class="text-stone-warm/75 text-sm leading-relaxed max-w-sm">
+            Operating with <strong>{siteInfo.groupName}</strong>. We acquire properties directly for cash, deliver turnkey homes for families, and structure high-value commercial developments.
+          </p>
+          <div class="pt-2 text-sm text-stone-warm/90 space-y-1">
+            <p><strong class="text-white">Group:</strong> {siteInfo.groupName}</p>
+            <p><strong class="text-white">Email:</strong> {siteInfo.email}</p>
+            <p><strong class="text-white">Hours:</strong> {siteInfo.hours}</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-3">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-stone-warm/60 border-b border-white/15 pb-2">
+            Navigation
+          </h3>
+          <ul class="space-y-2.5 text-sm">
+            {navLinks.map((link) => (
+              <li>
+                <a href={link.href} class="text-stone-warm/80 hover:text-white transition-colors">
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-3">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-stone-warm/60 border-b border-white/15 pb-2">
+            Three Tracks We Serve
+          </h3>
+          <ul class="space-y-3 text-sm text-stone-warm/80">
+            <li>
+              <a href="/sell" class="block hover:text-white">
+                <span class="font-semibold text-white block">1. Homeowners Selling Direct →</span>
+                Fast cash offers, as-is condition, zero agent commissions.
+              </a>
+            </li>
+            <li>
+              <a href="/properties" class="block hover:text-white">
+                <span class="font-semibold text-white block">2. Home Buyers & Families →</span>
+                Turnkey residential properties & renovated family homes.
+              </a>
+            </li>
+            <li>
+              <a href="/services" class="block hover:text-white">
+                <span class="font-semibold text-white block">3. Commercial & Land Investors →</span>
+                Multi-family deals, infill land & joint-venture development.
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-warm/60">
+          <p>© {new Date().getFullYear()} {siteInfo.brand} • {siteInfo.groupName}. All rights reserved.</p>
+          <p>Built with clean architectural standards • Equal Housing Opportunity</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>
