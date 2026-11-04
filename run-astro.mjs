@@ -16,6 +16,9 @@ function syncToCache() {
     copyFileSync(join(projectRoot, 'astro.config.mjs'), join(localCacheDir, 'astro.config.mjs'));
     copyFileSync(join(projectRoot, 'tailwind.config.mjs'), join(localCacheDir, 'tailwind.config.mjs'));
     cpSync(join(projectRoot, 'src'), join(localCacheDir, 'src'), { recursive: true, force: true });
+    if (existsSync(join(projectRoot, 'public'))) {
+      cpSync(join(projectRoot, 'public'), join(localCacheDir, 'public'), { recursive: true, force: true });
+    }
   } catch {
     // Ignore transient sync locks
   }
@@ -27,6 +30,11 @@ if (cmd === 'dev') {
   watch(join(projectRoot, 'src'), { recursive: true }, () => {
     syncToCache();
   });
+  if (existsSync(join(projectRoot, 'public'))) {
+    watch(join(projectRoot, 'public'), { recursive: true }, () => {
+      syncToCache();
+    });
+  }
 }
 
 const astroBin = join(localCacheDir, 'node_modules', '.bin', 'astro.cmd');

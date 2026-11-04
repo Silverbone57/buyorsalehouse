@@ -1,119 +1,203 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { siteInfo } from '../data/siteData.js';
-
-const steps = [
-  {
-    step: '01',
-    title: 'Share Your Property Details',
-    description:
-      'Fill out the quick form on this page or call us directly. Tell us the address, general condition, and your ideal timeline.',
-  },
-  {
-    step: '02',
-    title: 'Receive a Clear, Written Offer',
-    description:
-      'We evaluate the property and present a straightforward, no-obligation cash offer—or a joint-venture development proposal if you own high-potential land.',
-  },
-  {
-    step: '03',
-    title: 'Close on Your Schedule',
-    description:
-      'Pick the closing date that works for you—as fast as 10 to 14 days, or take extra time to relocate. No repairs, no showings, and zero agent commissions.',
-  },
-];
+import {
+  siteInfo,
+  flatFeeTiers,
+  flatFeeBreakdown,
+  fullServicePillars,
+} from '../data/siteData.js';
 ---
 
-<Layout title={`Sell Your House or Land Direct | ${siteInfo.brand}`}>
+<Layout title={`Flat-Fee Home Selling & Direct Cash Offers | ${siteInfo.shortGroup}`}>
   <!-- Header Banner -->
   <section class="bg-forest text-stone-paper border-b-2 border-ink py-14 sm:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-xs font-bold uppercase tracking-widest text-stone-warm/75 mb-2">
-        Direct Acquisition Program • Homeowners & Landowners
-      </p>
-      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight max-w-3xl">
-        Sell Your House or Land Directly—No Repairs, No Commissions.
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-stone-paper text-forest text-xs font-extrabold uppercase tracking-widest mb-4 border border-ink">
+        Limited Time Offer • People Over Percentages
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight max-w-4xl">
+        Full-Service Home Selling. Transparent Flat Fee. Keep More of Your Equity.
       </h1>
-      <p class="text-stone-warm/85 max-w-2xl text-base sm:text-lg mt-4 leading-relaxed">
-        Whether you have an inherited property, a house needing major repairs, a rental with tenants, or a parcel of land ready for development, we buy directly with clear terms.
+      <p class="text-stone-warm/90 max-w-2xl text-base sm:text-lg mt-4 leading-relaxed">
+        Traditional percentage commissions rise when home values rise. Our flat-fee model helps Tampa Bay sellers keep thousands more in equity while receiving 100% full-service representation from listing to closing—or choose an instant as-is cash offer if you need to sell immediately.
       </p>
     </div>
   </section>
 
-  <!-- Main Content + Seller Intake Form -->
-  <section class="py-16 bg-stone-paper border-b border-ink">
+  <!-- Savings Callout Strip -->
+  <section class="bg-ink text-stone-paper border-b-2 border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm sm:text-base font-medium text-stone-warm">
+        <strong class="text-white">Example ($600K Home):</strong> 3% listing-side commission is <span class="line-through">$18,000</span> — our flat fee is <strong class="text-white">$7,900</strong>.
+      </p>
+      <p class="font-display text-lg font-extrabold text-emerald-300">
+        Potential Equity Savings: $10,100
+      </p>
+    </div>
+  </section>
+
+  <!-- Transparent Flat-Fee Pricing Grid -->
+  <section class="py-16 bg-stone-warm border-b border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-forest mb-1">
+            Transparent Flat-Fee Pricing
+          </p>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-ink">
+            Select Your Home Value Range
+          </h2>
+        </div>
+        <span class="text-xs font-bold uppercase tracking-wider bg-forest text-white px-3.5 py-2 border border-ink self-start lg:self-auto">
+          For Sellers Listing Their Home Only (Not For Buyers)
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {flatFeeTiers.slice(0, 6).map((tier) => (
+          <div class="border-2 border-ink bg-white p-6 shadow-[6px_6px_0px_0px_#141514] flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-stone-border pb-3 mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-ink-muted">
+                Home Price Tier
+              </span>
+              <span class="text-sm font-extrabold bg-forest text-white px-3 py-1">
+                {tier.range}
+              </span>
+            </div>
+            <div>
+              <p class="font-display text-3xl sm:text-4xl font-extrabold text-ink">
+                {tier.fee}
+              </p>
+              <p class="text-xs font-bold uppercase tracking-widest text-forest mt-1">
+                {tier.sublabel}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- $1M+ Row -->
+      <div class="mt-6 border-2 border-ink bg-stone-paper p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-[6px_6px_0px_0px_#141514]">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-forest">
+            $1M+ Homes & Estates
+          </span>
+          <h3 class="font-display text-2xl font-extrabold text-ink">
+            At Request — Total Fee Custom Quoted
+          </h3>
+        </div>
+        <p class="text-xs text-ink-muted max-w-md">
+          (Buyer-broker compensation, if offered, is separate and negotiable.)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works + 6-Month Guarantee + Full Service + Seller Intake Form -->
+  <section id="seller-intake" class="py-16 bg-stone-paper border-b border-ink">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-      <!-- Left Column: How It Works + Comparison -->
-      <div class="lg:col-span-6 space-y-12">
+      <!-- Left Column: How It Works, Guarantee, Full Service & Advisor Card -->
+      <div class="lg:col-span-6 space-y-10">
+        <!-- How It Works -->
         <div>
           <p class="text-xs font-bold uppercase tracking-widest text-forest mb-2">
-            Simple 3-Step Process
+            Simple & Predictable
           </p>
           <h2 class="font-display text-3xl font-extrabold text-ink">
-            How Selling Direct To Us Works
+            How the Flat-Fee Structure Works
           </h2>
-          <div class="mt-6 space-y-6">
-            {steps.map((s) => (
-              <div class="border-2 border-ink bg-white p-6 flex gap-5">
-                <div class="font-display text-3xl font-extrabold text-forest shrink-0">
-                  {s.step}
+          <div class="mt-5 space-y-4">
+            {flatFeeBreakdown.map((item) => (
+              <div class="border-2 border-ink bg-white p-5 flex items-start gap-5">
+                <div class="font-display text-2xl sm:text-3xl font-extrabold text-forest min-w-[95px]">
+                  {item.amount}
                 </div>
                 <div>
-                  <h3 class="font-display text-lg font-bold text-ink">{s.title}</h3>
-                  <p class="text-sm text-ink-muted mt-1 leading-relaxed">{s.description}</p>
+                  <h3 class="font-display text-lg font-bold text-ink">{item.title}</h3>
+                  <p class="text-sm text-ink-muted mt-1 leading-relaxed">{item.detail}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <!-- Comparison Box -->
-        <div class="border-2 border-ink bg-stone-warm p-6 sm:p-8">
-          <h3 class="font-display text-xl font-extrabold text-ink mb-4">
-            Why Owners Sell Direct Instead of Listing Traditionally
+        <!-- 6-Month Confidence Guarantee -->
+        <div class="border-2 border-ink bg-forest text-stone-paper p-7 shadow-[6px_6px_0px_0px_#141514]">
+          <span class="inline-block text-xs font-extrabold uppercase tracking-widest bg-stone-paper text-forest px-3 py-1 mb-3 border border-ink">
+            ✓ 6-Month Confidence Guarantee
+          </span>
+          <h3 class="font-display text-2xl font-extrabold text-white">
+            We Win When You Win
           </h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
-            <div class="bg-white p-5 border border-ink">
-              <p class="font-bold text-forest uppercase tracking-wider text-xs mb-3">
-                Selling Direct to {siteInfo.brand}
-              </p>
-              <ul class="space-y-2 text-ink font-medium">
-                <li>✓ 0% Commissions or Agent Fees</li>
-                <li>✓ We Buy 100% As-Is (No Repairs)</li>
-                <li>✓ No Open Houses or Strangers</li>
-                <li>✓ Guaranteed Cash Closing in 10–14 Days</li>
-              </ul>
-            </div>
+          <p class="text-sm sm:text-base text-stone-warm/90 mt-2 leading-relaxed">
+            If the property does not sell within 6 months, <strong>50% of the initial marketing deposit is refunded — that is $750 back.</strong>
+          </p>
+        </div>
 
-            <div class="bg-stone-paper p-5 border border-stone-border text-ink-muted">
-              <p class="font-bold text-ink uppercase tracking-wider text-xs mb-3">
-                Traditional MLS Listing
+        <!-- What Full Service Actually Means + Portrait -->
+        <div class="border-2 border-ink bg-stone-warm p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 border-b border-ink pb-5">
+            <img
+              src={siteInfo.portrait}
+              alt="Easy Realty Advisor"
+              class="w-24 h-24 object-cover object-top border-2 border-ink shrink-0"
+            />
+            <div>
+              <h3 class="font-display text-xl font-extrabold text-ink">
+                What Full Service Actually Means
+              </h3>
+              <p class="text-xs font-bold uppercase tracking-wider text-forest mt-1">
+                {siteInfo.groupName} • {siteInfo.phone}
               </p>
-              <ul class="space-y-2">
-                <li>✕ 5%–6% Realtor Commissions</li>
-                <li>✕ Expensive Inspection Repairs</li>
-                <li>✕ Months of Showings & Uncertainty</li>
-                <li>✕ Buyer Mortgage Fall-Through Risk</li>
-              </ul>
+              <p class="text-xs text-ink-muted mt-1">
+                Complete representation from listing to closing — or ask us for a direct as-is cash offer if you prefer not to list on the MLS.
+              </p>
             </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            {fullServicePillars.map((pillar) => (
+              <div class="bg-white p-4 border border-ink">
+                <p class="font-bold text-forest uppercase tracking-wider text-xs mb-1.5">
+                  ■ {pillar.title}
+                </p>
+                <p class="text-xs text-ink-muted leading-relaxed">
+                  {pillar.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Seller Offer Request Form -->
+      <!-- Right Column: Seller Valuation / Flat-Fee Listing Request Form -->
       <div class="lg:col-span-6">
         <div class="border-2 border-ink bg-white p-8 sm:p-10 shadow-[8px_8px_0px_0px_#163024]">
           <span class="inline-block text-xs font-bold uppercase tracking-widest bg-forest text-white px-3 py-1 mb-3">
-            No-Obligation Valuation
+            Start Your Sale • Keep Your Equity
           </span>
           <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-ink">
-            Request Your Cash Offer or Land Evaluation
+            Request Flat-Fee Listing or Direct Cash Offer
           </h2>
           <p class="text-sm text-ink-muted mt-2 mb-6">
-            Complete the property details below. Our acquisitions team will review and reach out within 24 hours.
+            Enter your property details below or call us directly at <a href={`tel:${siteInfo.phone.replace(/[^0-9+]/g, '')}`} class="font-bold text-forest underline">{siteInfo.phone}</a>.
           </p>
 
           <form id="seller-form" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+                How Would You Like to Sell? *
+              </label>
+              <select
+                name="sellingMethod"
+                class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-forest"
+              >
+                <option>Flat-Fee Full-Service MLS Listing (Keep Maximum Equity)</option>
+                <option>Direct As-Is Cash Offer (Fastest Closing, No Showings)</option>
+                <option>Compare Both Options for My Property</option>
+              </select>
+            </div>
+
             <div>
               <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
                 Property Street Address *
@@ -122,7 +206,7 @@ const steps = [
                 type="text"
                 name="address"
                 required
-                placeholder="123 Main St, City, State, ZIP"
+                placeholder="123 Main St, Tampa, FL"
                 class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
               />
             </div>
@@ -130,62 +214,35 @@ const steps = [
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
-                  Property Type *
+                  Estimated Home Value *
                 </label>
                 <select
-                  name="propertyType"
+                  name="valueTier"
                   class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
                 >
-                  <option>Single-Family Home</option>
-                  <option>Multi-Family (2–10+ Units)</option>
-                  <option>Vacant Land / Development Lot</option>
-                  <option>Townhouse / Condo</option>
-                  <option>Commercial Building</option>
+                  <option>Under $150k ($2,900 Flat Fee)</option>
+                  <option>$150k – $250k ($2,900 – $4,500)</option>
+                  <option>$250k – $350k ($4,500 – $5,900)</option>
+                  <option selected>$350k – $500k ($5,900 – $6,900)</option>
+                  <option>$500k – $750k ($6,900 – $9,800)</option>
+                  <option>$750k – $1M ($9,800 – $13,900)</option>
+                  <option>$1M+ (Custom Flat Fee)</option>
                 </select>
               </div>
 
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
-                  Current Condition
-                </label>
-                <select
-                  name="condition"
-                  class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
-                >
-                  <option>Good / Move-In Ready</option>
-                  <option>Needs Minor Cosmetic Updates</option>
-                  <option>Needs Major Repairs / Full Rehab</option>
-                  <option>Vacant Land / Tear-Down</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
-                  Ideal Timeline to Sell
+                  Ideal Timeline
                 </label>
                 <select
                   name="timeline"
                   class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
                 >
-                  <option>ASAP (Within 14 Days)</option>
+                  <option>Ready to List / Sell Immediately</option>
                   <option>Within 30 Days</option>
                   <option>1 to 3 Months</option>
-                  <option>Exploring Joint-Venture / Flexible</option>
+                  <option>Just Gathering Numbers</option>
                 </select>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
-                  Asking Price (Optional)
-                </label>
-                <input
-                  type="text"
-                  name="askingPrice"
-                  placeholder="e.g. $450,000 or Open to Offer"
-                  class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
-                />
               </div>
             </div>
 
@@ -210,7 +267,7 @@ const steps = [
                   type="tel"
                   name="phone"
                   required
-                  placeholder="(555) 123-4567"
+                  placeholder="(727) 000-0000"
                   class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
                 />
               </div>
@@ -236,7 +293,7 @@ const steps = [
               <textarea
                 name="notes"
                 rows="3"
-                placeholder="Tell us anything else about the property, tenants, or your goals..."
+                placeholder="Tell us anything else about your property or goals..."
                 class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
               ></textarea>
             </div>
@@ -245,14 +302,14 @@ const steps = [
               type="submit"
               class="w-full bg-forest text-white py-4 font-bold text-sm uppercase tracking-widest border border-ink hover:bg-ink transition-colors"
             >
-              Submit Property for Direct Offer →
+              Get My Flat-Fee Savings & Valuation →
             </button>
 
             <div
               id="seller-success"
               class="hidden p-4 bg-forest-tint border border-forest text-forest text-sm font-semibold"
             >
-              ✓ Thank you! Your property details have been recorded. Our acquisitions team will contact you within 24 hours.
+              ✓ Thank you! Your property details have been received. Easy Realty will contact you shortly, or you can call us now at {siteInfo.phone}.
             </div>
           </form>
         </div>

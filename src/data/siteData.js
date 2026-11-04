@@ -1,43 +1,131 @@
 // ============================================================================
-// SITE DATA — Edit properties, services, or company info right here!
+// SITE DATA — Edit properties, flat-fee pricing, services, or company info here!
 // Any changes here automatically update across all pages on the site.
 // ============================================================================
 
 export const siteInfo = {
   brand: 'BuyOrSaleHouse',
-  groupName: 'Easy Realty Real Estate Group',
+  groupName: 'Easy Realty Real Estate Services',
   shortGroup: 'Easy Realty',
-  tagline: 'Residential, Direct Cash Acquisitions & Commercial Real Estate — Easy Realty Real Estate Group',
-  phone: 'Coming Soon',
-  email: 'inquiries@buyorsalehouse.com',
-  office: 'Easy Realty Real Estate Group',
+  region: 'Tampa Bay & Surrounding Florida Markets',
+  tagline: 'Full-Service Flat-Fee Home Selling, Direct Acquisitions & Commercial Real Estate — Easy Realty',
+  phone: '(727) 643-6173',
+  email: 'russellsunshinerealty@gmail.com',
+  office: 'Tampa Bay Area • Easy Realty Real Estate Services',
   hours: 'Mon – Sat: 8:00 AM – 7:00 PM',
+  portrait: '/images/realtor-portrait.png',
 };
+
+export const flatFeeTiers = [
+  {
+    range: 'Under $150k',
+    fee: '$2,900',
+    sublabel: 'Total Fee',
+    highlight: false,
+  },
+  {
+    range: '$150k – $250k',
+    fee: '$2,900 – $4,500',
+    sublabel: 'Total Fee',
+    highlight: false,
+  },
+  {
+    range: '$250k – $350k',
+    fee: '$4,500 – $5,900',
+    sublabel: 'Total Fee',
+    highlight: false,
+  },
+  {
+    range: '$350k – $500k',
+    fee: '$5,900 – $6,900',
+    sublabel: 'Total Fee',
+    highlight: true,
+  },
+  {
+    range: '$500k – $750k',
+    fee: '$6,900 – $9,800',
+    sublabel: 'Total Fee',
+    highlight: true,
+  },
+  {
+    range: '$750k – $1M',
+    fee: '$9,800 – $13,900',
+    sublabel: 'Total Fee',
+    highlight: false,
+  },
+  {
+    range: '$1M+ Luxury & Commercial',
+    fee: 'At Request',
+    sublabel: 'Custom Flat-Fee Quote',
+    highlight: false,
+  },
+];
+
+export const flatFeeBreakdown = [
+  {
+    amount: '$1,500',
+    title: 'Upfront Marketing Retainer',
+    detail: 'Paid at signing to launch full-scale marketing and listing preparation.',
+  },
+  {
+    amount: '$225',
+    title: 'Professional Media Fee',
+    detail: 'Covers high-end architectural photography, listing media, and visual assets.',
+  },
+  {
+    amount: 'Balance',
+    title: 'Success Fee at Closing',
+    detail: 'Remaining balance of your flat fee is paid only when the home successfully closes.',
+  },
+];
+
+export const fullServicePillars = [
+  {
+    title: 'Professional Media',
+    description:
+      'High-end photography, videos, and listing media designed to make your home stand out from the competition.',
+  },
+  {
+    title: 'Massive Exposure',
+    description:
+      'Full MLS listing plus automatic syndication to Zillow, Realtor.com, and all major real estate platforms.',
+  },
+  {
+    title: 'Total Representation',
+    description:
+      'Expert price negotiation, contract paperwork, buyer coordination, and closing support from start to finish.',
+  },
+  {
+    title: 'Zero Hidden Fees',
+    description:
+      'No junk admin fees, no technology surcharges, and no hidden brokerage add-ons at the closing table.',
+  },
+];
 
 export const properties = [
   {
     id: 'residential-listing-coming-soon',
-    title: 'Featured Residential Home — Coming Soon',
+    title: 'Tampa Bay Residential Listing — Coming Soon',
     category: 'Residential',
     status: 'Coming Soon',
     featured: true,
-    location: 'New Listing Preparing for Market',
+    location: 'Tampa Bay Area • Residential Portfolio',
     price: 'Coming Soon',
     specs: {
-      beds: 'Residential',
+      beds: 'Single-Family',
       baths: 'Turnkey',
-      sqft: 'Details Soon',
+      sqft: 'Launching Soon',
     },
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85',
-    summary: 'Our upcoming single-family residential listings are currently being finalized. Contact us directly for early access or off-market availability.',
+    summary: 'Upcoming single-family residential homes represented by Easy Realty are being prepared for market. Contact us for early access or off-market availability.',
   },
   {
     id: 'commercial-asset-coming-soon',
-    title: 'Commercial & Investment Opportunity — Coming Soon',
+    title: 'Commercial & Multi-Family Asset — Coming Soon',
     category: 'Commercial',
     status: 'Coming Soon',
     featured: true,
-    location: 'Commercial & Multi-Family Portfolio',
+    location: 'Tampa Bay Commercial Corridor',
     price: 'Coming Soon',
     specs: {
       beds: 'Commercial',
@@ -45,7 +133,7 @@ export const properties = [
       sqft: 'Inquire Direct',
     },
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85',
-    summary: 'Commercial and value-add investment opportunities through Easy Realty Real Estate Group will be posted here soon. Reach out to join our investor list.',
+    summary: 'Commercial and value-add investment opportunities through Easy Realty Real Estate Services will be posted here soon. Call or email to join our investor list.',
   },
   {
     id: 'land-development-coming-soon',
@@ -53,7 +141,7 @@ export const properties = [
     category: 'Land & Development',
     status: 'Coming Soon',
     featured: true,
-    location: 'Development & Joint-Venture Track',
+    location: 'Florida Growth & Development Track',
     price: 'Coming Soon',
     specs: {
       beds: 'Land / Lot',
@@ -61,51 +149,51 @@ export const properties = [
       sqft: 'Details Soon',
     },
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85',
-    summary: 'New residential homes and development parcels are being onboarded. Have a property to sell or looking for a specific neighborhood? Let us know below.',
+    summary: 'New residential homes and development parcels are being onboarded. Have a property to sell or looking for a specific neighborhood? Reach out directly.',
   },
 ];
 
 export const coreCapabilities = [
   {
     number: '01',
-    title: 'Direct Cash Acquisitions & Fast Sales',
-    audience: 'For Homeowners & Landowners',
+    title: 'Flat-Fee Full-Service Home Selling',
+    audience: 'People Over Percentages',
     description:
-      'Need to sell a house as-is without repairs, showings, or months of waiting? We buy residential homes and land directly with flexible closing timelines.',
-    linkText: 'Get a Direct Offer',
+      'Traditional percentage commissions rise when home values rise. Our transparent flat-fee model helps Tampa Bay sellers keep thousands more in equity while receiving 100% full-service representation from listing to closing.',
+    linkText: 'See Flat-Fee Pricing Tiers',
     linkHref: '/sell',
     highlights: [
-      'No repairs, cleaning, or staging required',
-      'Zero hidden fees — straightforward numbers',
-      'Close on a fast timeline or on your schedule',
+      'Flat fees starting at $2,900 — save $10,000+ in equity',
+      'Full MLS, Zillow & Realtor.com exposure + pro media',
+      '6-Month Confidence Guarantee ($750 retainer refund)',
     ],
   },
   {
     number: '02',
-    title: 'Curated Residential Sales & Brokerage',
-    audience: 'For Home Buyers & Families',
+    title: 'Direct Cash Sales & Fast Closings',
+    audience: 'For As-Is Property Owners',
     description:
-      'Backed by Easy Realty Real Estate Group, we help families buy and sell quality residential homes with clear guidance from start to finish.',
-    linkText: 'View Upcoming Homes',
-    linkHref: '/properties',
+      'Need to sell immediately without listing on the MLS or making repairs? We also structure direct cash offers and rapid closings tailored to your timeline.',
+    linkText: 'Request an Offer or Valuation',
+    linkHref: '/sell#seller-intake',
     highlights: [
-      'Move-in ready & thoroughly vetted properties',
-      'Backed by Easy Realty Real Estate Group',
-      'Early access to upcoming & off-market listings',
+      'Sell 100% as-is with zero repairs or staging',
+      'Compare a flat-fee MLS listing vs. an instant cash offer',
+      'No hidden brokerage surcharges or surprise fees',
     ],
   },
   {
     number: '03',
-    title: 'Commercial & Joint-Venture Development',
-    audience: 'For Investors & Partners',
+    title: 'Residential Buying, Commercial & Land',
+    audience: 'For Buyers & Investors',
     description:
-      'From multi-family acquisitions and land assembly to development partnerships, we structure high-conviction real estate deals.',
-    linkText: 'Explore Investor Services',
+      'Whether your family is searching for a move-in-ready Tampa Bay home or you are an investor acquiring multi-family and development land, Easy Realty delivers end-to-end execution.',
+    linkText: 'Explore Properties & Services',
     linkHref: '/services',
     highlights: [
-      'Value-add multi-family & mixed-use commercial',
-      'Land entitlement & joint-venture partnerships',
-      'Disciplined underwriting & deal execution',
+      'Dedicated buyer representation & off-market access',
+      'Value-add commercial & multi-family acquisitions',
+      'Land assembly & joint-venture development partnerships',
     ],
   },
 ];

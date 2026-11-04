@@ -2,7 +2,7 @@
 import { siteInfo } from '../data/siteData.js';
 
 const {
-  title = `${siteInfo.brand} | Modern Real Estate, Direct Sales & Development`,
+  title = `${siteInfo.shortGroup} | ${siteInfo.brand} — Full-Service Flat-Fee & Real Estate Services`,
   description = siteInfo.tagline,
 } = Astro.props;
 
@@ -10,8 +10,8 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { name: 'Home', href: '/' },
+  { name: 'Flat-Fee Selling', href: '/sell' },
   { name: 'Properties', href: '/properties' },
-  { name: 'Sell Your Property', href: '/sell' },
   { name: 'Services & Investors', href: '/services' },
   { name: 'About & Contact', href: '/contact' },
 ];
@@ -36,14 +36,14 @@ const navLinks = [
     <div class="bg-forest text-stone-paper text-xs border-b border-forest-light">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap justify-between items-center gap-2">
         <p class="font-medium tracking-wide uppercase text-[11px] text-stone-warm/90">
-          {siteInfo.groupName} • Residential • Direct Cash Purchases • Commercial
+          {siteInfo.groupName} • People Over Percentages • {siteInfo.region}
         </p>
         <div class="flex items-center gap-6">
-          <span class="font-medium text-stone-warm/90">
-            New Portfolio Listings Launching Soon
-          </span>
-          <a href="/sell" class="hidden sm:inline-block underline font-semibold text-white">
-            Request a Cash Offer →
+          <a href={`tel:${siteInfo.phone.replace(/[^0-9+]/g, '')}`} class="hover:underline font-semibold text-white">
+            Call Us: {siteInfo.phone}
+          </a>
+          <a href={`mailto:${siteInfo.email}`} class="hidden sm:inline-block hover:underline text-stone-warm/90">
+            {siteInfo.email}
           </a>
         </div>
       </div>
@@ -59,10 +59,10 @@ const navLinks = [
           </div>
           <div>
             <span class="font-display font-extrabold text-xl tracking-tight text-ink block leading-none">
-              BuyOrSale<span class="text-forest">House</span>
+              Easy<span class="text-forest">Realty</span>
             </span>
             <span class="text-[10px] uppercase tracking-widest text-ink-muted font-semibold block mt-1">
-              {siteInfo.groupName}
+              {siteInfo.brand} • Real Estate Services
             </span>
           </div>
         </a>
@@ -94,7 +94,7 @@ const navLinks = [
             href="/sell"
             class="bg-forest text-stone-paper px-5 py-2.5 text-sm font-semibold border border-ink hover:bg-ink transition-colors"
           >
-            Get Offer / Sell Fast
+            Flat-Fee Pricing / Sell
           </a>
         </div>
 
@@ -126,7 +126,7 @@ const navLinks = [
             href="/sell"
             class="block w-full text-center bg-forest text-stone-paper py-3 font-semibold border border-ink"
           >
-            Get a Direct Cash Offer
+            See Flat-Fee Pricing & Sell
           </a>
         </div>
       </div>
@@ -144,10 +144,10 @@ const navLinks = [
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <p class="text-xs uppercase tracking-widest text-stone-warm/80 font-semibold mb-2">
-              Ready to Make a Move?
+              Keep More of Your Equity • People Over Percentages
             </p>
             <h2 class="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Whether buying a home, selling as-is, or partnering on land—let’s talk directly.
+              Example: On a $600K home, a 3% listing commission is $18,000. Our flat fee is $7,900 — saving you $10,100.
             </h2>
           </div>
           <div class="flex flex-wrap gap-4 shrink-0">
@@ -155,13 +155,13 @@ const navLinks = [
               href="/sell"
               class="bg-stone-paper text-ink px-6 py-3.5 text-sm font-bold border border-ink hover:bg-stone-warm transition-colors"
             >
-              Sell Your Property
+              View Flat-Fee Pricing
             </a>
             <a
-              href="/properties"
+              href={`tel:${siteInfo.phone.replace(/[^0-9+]/g, '')}`}
               class="bg-transparent text-white px-6 py-3.5 text-sm font-bold border border-white hover:bg-white/10 transition-colors"
             >
-              Browse Listings
+              Call {siteInfo.phone}
             </a>
           </div>
         </div>
@@ -176,20 +176,20 @@ const navLinks = [
             </div>
             <div>
               <span class="font-display font-extrabold text-xl tracking-tight text-white block leading-none">
-                BuyOrSaleHouse
+                {siteInfo.shortGroup}
               </span>
               <span class="text-[10px] uppercase tracking-widest text-stone-warm/70 font-semibold block mt-1">
-                {siteInfo.groupName}
+                {siteInfo.brand} • Real Estate Services
               </span>
             </div>
           </div>
           <p class="text-stone-warm/75 text-sm leading-relaxed max-w-sm">
-            Operating with <strong>{siteInfo.groupName}</strong>. We acquire properties directly for cash, deliver turnkey homes for families, and structure high-value commercial developments.
+            Full-service home selling with transparent flat-fee pricing and zero hidden commission surprises. Helping Tampa Bay homeowners, buyers, and commercial investors keep more of their equity.
           </p>
           <div class="pt-2 text-sm text-stone-warm/90 space-y-1">
-            <p><strong class="text-white">Group:</strong> {siteInfo.groupName}</p>
-            <p><strong class="text-white">Email:</strong> {siteInfo.email}</p>
-            <p><strong class="text-white">Hours:</strong> {siteInfo.hours}</p>
+            <p><strong class="text-white">Call Us:</strong> <a href={`tel:${siteInfo.phone.replace(/[^0-9+]/g, '')}`} class="hover:underline">{siteInfo.phone}</a></p>
+            <p><strong class="text-white">Email:</strong> <a href={`mailto:${siteInfo.email}`} class="hover:underline">{siteInfo.email}</a></p>
+            <p><strong class="text-white">Market:</strong> {siteInfo.region}</p>
           </div>
         </div>
 
@@ -210,25 +210,25 @@ const navLinks = [
 
         <div class="md:col-span-4 space-y-3">
           <h3 class="text-xs font-bold uppercase tracking-widest text-stone-warm/60 border-b border-white/15 pb-2">
-            Three Tracks We Serve
+            How We Serve You
           </h3>
           <ul class="space-y-3 text-sm text-stone-warm/80">
             <li>
               <a href="/sell" class="block hover:text-white">
-                <span class="font-semibold text-white block">1. Homeowners Selling Direct →</span>
-                Fast cash offers, as-is condition, zero agent commissions.
+                <span class="font-semibold text-white block">1. Flat-Fee Full-Service Selling →</span>
+                Transparent flat fees ($2,900+), full MLS/Zillow exposure, and 6-Month Guarantee.
               </a>
             </li>
             <li>
               <a href="/properties" class="block hover:text-white">
                 <span class="font-semibold text-white block">2. Home Buyers & Families →</span>
-                Turnkey residential properties & renovated family homes.
+                Turnkey residential properties & dedicated Tampa Bay buyer representation.
               </a>
             </li>
             <li>
               <a href="/services" class="block hover:text-white">
-                <span class="font-semibold text-white block">3. Commercial & Land Investors →</span>
-                Multi-family deals, infill land & joint-venture development.
+                <span class="font-semibold text-white block">3. Commercial & Direct Cash Deals →</span>
+                As-is cash offers, multi-family investments & land development.
               </a>
             </li>
           </ul>
@@ -237,8 +237,8 @@ const navLinks = [
 
       <div class="border-t border-white/15">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-warm/60">
-          <p>© {new Date().getFullYear()} {siteInfo.brand} • {siteInfo.groupName}. All rights reserved.</p>
-          <p>Built with clean architectural standards • Equal Housing Opportunity</p>
+          <p>© {new Date().getFullYear()} {siteInfo.groupName} ({siteInfo.brand}). All rights reserved.</p>
+          <p>Licensed Real Estate Services • Listings subject to individual agreement • Equal Housing Opportunity</p>
         </div>
       </div>
     </footer>

@@ -1,6 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { properties, coreCapabilities, siteInfo } from '../data/siteData.js';
+import {
+  properties,
+  coreCapabilities,
+  flatFeeTiers,
+  flatFeeBreakdown,
+  fullServicePillars,
+  siteInfo,
+} from '../data/siteData.js';
 
 const featuredProperties = properties.filter((p) => p.featured);
 ---
@@ -8,79 +15,90 @@ const featuredProperties = properties.filter((p) => p.featured);
 <Layout>
   <!-- HERO SECTION -->
   <section class="border-b border-ink bg-stone-paper">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Left Column: Bold Headline + Actions -->
-        <div class="lg:col-span-7 space-y-8">
+        <div class="lg:col-span-7 space-y-7">
           <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-forest-tint border border-forest text-forest text-xs font-bold uppercase tracking-widest">
             <span class="w-2 h-2 bg-forest inline-block"></span>
-            {siteInfo.groupName} • Buy • Sell Direct • Invest
+            {siteInfo.groupName} • Keep More of Your Equity
           </div>
 
-          <h1 class="font-display text-4xl sm:text-6xl lg:text-[64px] font-extrabold text-ink tracking-tight leading-[1.05]">
-            Real Estate Built on <span class="text-forest underline decoration-2 underline-offset-8">Clarity</span>, Speed & Value.
+          <h1 class="font-display text-4xl sm:text-6xl lg:text-[62px] font-extrabold text-ink tracking-tight leading-[1.05]">
+            Full-Service Home Selling. <span class="text-forest underline decoration-2 underline-offset-8">Flat Fee.</span> Zero Commission Surprises.
           </h1>
 
           <p class="text-lg sm:text-xl text-ink-muted max-w-2xl leading-relaxed">
-            Whether you need a direct cash offer for your current house, a move-in-ready home for your family, or a high-conviction commercial investment—we handle every transaction under one roof without the corporate bloat.
+            <strong>People Over Percentages:</strong> Traditional percentage commissions rise when home values rise. Our transparent flat-fee model helps Tampa Bay sellers keep thousands more in equity while receiving 100% full-service representation—plus direct cash offers, residential buying, and commercial deals under one roof.
           </p>
 
           <!-- Primary CTA Buttons -->
           <div class="flex flex-wrap gap-4 pt-2">
             <a
-              href="/properties"
+              href="/sell"
               class="bg-forest text-stone-paper px-7 py-4 text-sm sm:text-base font-bold border border-ink hover:bg-ink transition-colors"
             >
-              Browse Properties →
+              See Flat-Fee Pricing Tiers →
             </a>
             <a
-              href="/sell"
+              href="/properties"
               class="bg-stone-warm text-ink px-7 py-4 text-sm sm:text-base font-bold border border-ink hover:bg-forest hover:text-white transition-colors"
             >
-              Sell Your House Direct
+              Browse Properties
             </a>
             <a
-              href="/services"
-              class="px-5 py-4 text-sm sm:text-base font-bold text-ink hover:text-forest underline underline-offset-4"
+              href={`tel:${siteInfo.phone.replace(/[^0-9+]/g, '')}`}
+              class="px-4 py-4 text-sm sm:text-base font-bold text-ink hover:text-forest underline underline-offset-4"
             >
-              Investor & Land Deals
+              Call {siteInfo.phone}
             </a>
           </div>
 
-          <!-- Key Trust Metrics -->
+          <!-- Key Trust Metrics from Flyer -->
           <div class="grid grid-cols-3 gap-6 pt-6 border-t border-stone-border">
             <div>
-              <p class="font-display text-2xl sm:text-3xl font-extrabold text-ink">10–14 Days</p>
-              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">Direct Cash Closings</p>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-forest">$2,900+</p>
+              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">Transparent Flat-Fee Tiers</p>
             </div>
             <div>
-              <p class="font-display text-2xl sm:text-3xl font-extrabold text-forest">100% Turnkey</p>
-              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">Inspected Family Homes</p>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-ink">$10,100</p>
+              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">Example Savings on $600K Home</p>
             </div>
             <div>
-              <p class="font-display text-2xl sm:text-3xl font-extrabold text-ink">Zero Fees</p>
-              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">When Selling Direct To Us</p>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-forest">6-Month</p>
+              <p class="text-xs sm:text-sm text-ink-muted font-medium mt-1">Confidence Refund Guarantee</p>
             </div>
           </div>
         </div>
 
-        <!-- Right Column: Architectural Hero Image Box -->
+        <!-- Right Column: Realtor Portrait + Spotlight Card -->
         <div class="lg:col-span-5">
-          <div class="relative border-2 border-ink bg-stone-warm p-3 shadow-[8px_8px_0px_0px_#163024]">
-            <div class="aspect-[4/5] overflow-hidden border border-ink bg-ink relative">
+          <div class="relative border-2 border-ink bg-white p-4 shadow-[8px_8px_0px_0px_#163024]">
+            <div class="aspect-[4/4] overflow-hidden border border-ink bg-stone-warm relative">
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"
-                alt="Modern Architectural Residence"
-                class="w-full h-full object-cover"
+                src={siteInfo.portrait}
+                alt="Easy Realty Licensed Real Estate Professional"
+                class="w-full h-full object-cover object-top"
               />
-              <div class="absolute bottom-0 inset-x-0 bg-ink/90 backdrop-blur-sm text-stone-paper p-5 border-t border-white/20">
-                <div class="flex items-center justify-between text-xs uppercase tracking-widest text-stone-warm/75 mb-1">
-                  <span>{siteInfo.groupName}</span>
-                  <span class="text-emerald-300 font-bold">Portfolio Coming Soon</span>
-                </div>
-                <p class="font-display font-bold text-lg text-white">Residential, Cash Offers & Commercial</p>
-                <p class="text-xs text-stone-warm/80 mt-0.5">New listings & off-market opportunities launching soon</p>
+              <div class="absolute top-3 left-3 bg-forest text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 border border-ink">
+                People Over Percentages
               </div>
+            </div>
+            <div class="pt-4 pb-1 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-widest text-forest">
+                  {siteInfo.groupName}
+                </p>
+                <p class="font-display font-extrabold text-lg text-ink">
+                  Full-Service Representation • Listing to Closing
+                </p>
+              </div>
+              <a
+                href={`tel:${siteInfo.phone.replace(/[^0-9+]/g, '')}`}
+                class="bg-ink text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-center hover:bg-forest transition-colors shrink-0"
+              >
+                {siteInfo.phone}
+              </a>
             </div>
           </div>
         </div>
@@ -88,92 +106,195 @@ const featuredProperties = properties.filter((p) => p.featured);
     </div>
   </section>
 
-  <!-- 3-TRACK SELECTOR BAR ("WHO ARE YOU?") -->
-  <section class="bg-forest text-stone-paper border-b border-ink">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+  <!-- SAVINGS CALLOUT BANNER -->
+  <section class="bg-ink text-stone-paper border-b-2 border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="bg-forest text-white text-xs font-extrabold uppercase tracking-widest px-3 py-1 border border-white/20 shrink-0">
+          Real Math Example
+        </span>
+        <p class="text-sm sm:text-base font-medium text-stone-warm">
+          <strong class="text-white">$600K Home:</strong> Traditional 3% listing-side commission is <span class="line-through text-stone-warm/70">$18,000</span> — our flat fee is <strong class="text-white">$7,900</strong>.
+        </p>
+      </div>
+      <div class="text-sm sm:text-lg font-display font-extrabold text-emerald-300 shrink-0">
+        Potential Seller Savings: $10,100 →
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENT FLAT-FEE PRICING SECTION (DIRECT FROM FLYER) -->
+  <section class="py-20 bg-stone-warm border-b border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
         <div>
-          <p class="text-xs uppercase tracking-widest text-stone-warm/70 font-bold">
-            Choose Your Path
-          </p>
-          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">
-            Three Ways We Work With You
+          <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-3 py-1 bg-forest text-white mb-3">
+            Limited Time Offer • For Sellers Listing Their Home Only
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
+            Transparent Flat-Fee Pricing Tiers
           </h2>
+          <p class="text-ink-muted mt-2 max-w-2xl text-base">
+            Keep more of your hard-earned home equity with predictable flat-fee pricing and full MLS, Zillow, and Realtor.com representation.
+          </p>
         </div>
-        <p class="text-sm text-stone-warm/80 max-w-md">
-          Unlike cluttered property portals, we organize our services around your exact goal. Pick the track that fits you:
+        <p class="text-xs font-semibold text-ink-muted bg-stone-paper px-4 py-2.5 border border-ink self-start lg:self-auto">
+          * For sellers listing their home only (not for buyers). Buyer-broker compensation, if offered, is separate and negotiable.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Track 1: Sell Fast -->
-        <a
-          href="/sell"
-          class="group bg-stone-paper text-ink p-7 border-2 border-ink hover:bg-stone-warm transition-all flex flex-col justify-between"
-        >
-          <div>
-            <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-forest text-white mb-4">
-              Track 01 • Sellers
-            </span>
-            <h3 class="font-display text-xl font-extrabold text-ink group-hover:text-forest transition-colors">
-              I Want to Sell My House or Land Fast
-            </h3>
-            <p class="text-sm text-ink-muted mt-3 leading-relaxed">
-              Skip the repairs, open houses, and 6% realtor commissions. Get a straightforward cash offer or partner with us on your land.
-            </p>
+      <!-- 7 Pricing Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {flatFeeTiers.slice(0, 6).map((tier) => (
+          <div
+            class={`border-2 border-ink p-6 flex flex-col justify-between transition-all ${
+              tier.highlight
+                ? 'bg-white shadow-[6px_6px_0px_0px_#163024]'
+                : 'bg-stone-paper shadow-[6px_6px_0px_0px_#141514]'
+            }`}
+          >
+            <div class="flex items-center justify-between border-b border-stone-border pb-3 mb-4">
+              <span class="text-xs font-extrabold uppercase tracking-widest text-ink-muted">
+                Home Value Range
+              </span>
+              <span class="text-sm font-extrabold bg-forest text-white px-3 py-1">
+                {tier.range}
+              </span>
+            </div>
+            <div class="my-2">
+              <p class="font-display text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
+                {tier.fee}
+              </p>
+              <p class="text-xs font-bold uppercase tracking-widest text-forest mt-1">
+                {tier.sublabel}
+              </p>
+            </div>
           </div>
-          <span class="mt-6 inline-flex items-center font-bold text-sm text-forest group-hover:translate-x-1 transition-transform">
-            Request an Offer →
-          </span>
-        </a>
+        ))}
+      </div>
 
-        <!-- Track 2: Buy / Browse -->
-        <a
-          href="/properties"
-          class="group bg-stone-paper text-ink p-7 border-2 border-ink hover:bg-stone-warm transition-all flex flex-col justify-between"
-        >
-          <div>
-            <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-ink text-white mb-4">
-              Track 02 • Buyers & Families
-            </span>
-            <h3 class="font-display text-xl font-extrabold text-ink group-hover:text-forest transition-colors">
-              I’m Looking to Buy or Rent a Property
-            </h3>
-            <p class="text-sm text-ink-muted mt-3 leading-relaxed">
-              Explore our curated collection of renovated single-family homes, new townhomes, and commercial spaces ready for immediate occupancy.
-            </p>
+      <!-- $1M+ Full Width Banner + How It Works + 6-Month Guarantee -->
+      <div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- $1M+ Card + How It Works -->
+        <div class="lg:col-span-7 border-2 border-ink bg-white p-7 shadow-[6px_6px_0px_0px_#141514] space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b-2 border-ink gap-3">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-forest">
+                Luxury & High-Value Homes
+              </span>
+              <h3 class="font-display text-2xl font-extrabold text-ink">
+                $1M+ Properties — Flat Fee At Request
+              </h3>
+            </div>
+            <a
+              href="/sell#seller-intake"
+              class="bg-ink text-white px-5 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-forest transition-colors text-center"
+            >
+              Request Custom Quote →
+            </a>
           </div>
-          <span class="mt-6 inline-flex items-center font-bold text-sm text-forest group-hover:translate-x-1 transition-transform">
-            View All Properties →
-          </span>
-        </a>
 
-        <!-- Track 3: Investors / Commercial -->
-        <a
-          href="/services"
-          class="group bg-stone-paper text-ink p-7 border-2 border-ink hover:bg-stone-warm transition-all flex flex-col justify-between"
-        >
           <div>
-            <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-forest-light text-white mb-4">
-              Track 03 • Investors & Commercial
-            </span>
-            <h3 class="font-display text-xl font-extrabold text-ink group-hover:text-forest transition-colors">
-              I’m an Investor or Land Partner
+            <h4 class="text-xs font-extrabold uppercase tracking-widest text-ink mb-4">
+              How Our Flat-Fee Payment Works:
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {flatFeeBreakdown.map((step) => (
+                <div class="bg-stone-paper border border-ink p-4">
+                  <p class="font-display text-2xl font-extrabold text-forest">{step.amount}</p>
+                  <p class="font-bold text-xs uppercase tracking-wider text-ink mt-1">{step.title}</p>
+                  <p class="text-xs text-ink-muted mt-1.5 leading-relaxed">{step.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- 6-Month Confidence Guarantee Box -->
+        <div class="lg:col-span-5 border-2 border-ink bg-forest text-stone-paper p-7 shadow-[6px_6px_0px_0px_#141514] flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 bg-stone-paper text-forest px-3 py-1 text-xs font-extrabold uppercase tracking-widest mb-4 border border-ink">
+              <span>✓</span> Risk-Free Seller Protection
+            </div>
+            <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white">
+              6-Month Confidence Guarantee
             </h3>
-            <p class="text-sm text-ink-muted mt-3 leading-relaxed">
-              Partner with us on multi-family acquisitions, commercial buildings, joint-venture development, or off-market deal flow.
+            <p class="text-stone-warm/90 text-sm sm:text-base mt-3 leading-relaxed">
+              If your property does not sell within 6 months, <strong>50% of the initial marketing deposit is refunded — that is $750 back.</strong>
+            </p>
+            <p class="font-display font-bold text-emerald-300 text-lg mt-3">
+              “We win when you win.”
             </p>
           </div>
-          <span class="mt-6 inline-flex items-center font-bold text-sm text-forest group-hover:translate-x-1 transition-transform">
-            Explore Commercial & JV →
-          </span>
-        </a>
+
+          <a
+            href="/sell"
+            class="mt-6 block w-full text-center bg-stone-paper text-ink py-3.5 text-xs font-extrabold uppercase tracking-widest border border-ink hover:bg-stone-warm transition-colors"
+          >
+            Start Your Flat-Fee Listing →
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED PROPERTIES SECTION -->
-  <section class="py-20 border-b border-ink bg-stone-paper">
+  <!-- WHAT FULL SERVICE ACTUALLY MEANS (WITH PORTRAIT) -->
+  <section class="py-20 bg-stone-paper border-b border-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-4">
+          <div class="border-2 border-ink bg-stone-warm p-4 shadow-[6px_6px_0px_0px_#141514]">
+            <img
+              src={siteInfo.portrait}
+              alt="Easy Realty Advisor"
+              class="w-full aspect-[4/4] object-cover object-top border border-ink"
+            />
+            <div class="pt-4">
+              <p class="font-display font-extrabold text-xl text-ink">{siteInfo.shortGroup}</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-forest mt-0.5">
+                Licensed Real Estate Services • {siteInfo.region}
+              </p>
+              <p class="text-xs text-ink-muted mt-2">
+                Direct Line: <strong class="text-ink">{siteInfo.phone}</strong><br />
+                Email: <strong class="text-ink">{siteInfo.email}</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 space-y-8">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-forest mb-2">
+              Zero Compromise on Quality
+            </p>
+            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
+              What “Full Service” Actually Means
+            </h2>
+            <p class="text-ink-muted mt-2 text-base leading-relaxed">
+              Paying a flat fee doesn’t mean discount service. Every Easy Realty seller receives complete, white-glove listing representation from day one to the closing table:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {fullServicePillars.map((pillar) => (
+              <div class="border-2 border-ink bg-white p-6">
+                <h3 class="font-display text-xl font-extrabold text-ink mb-2 flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 bg-forest inline-block"></span>
+                  {pillar.title}
+                </h3>
+                <p class="text-sm text-ink-muted leading-relaxed">
+                  {pillar.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROPERTIES SECTION (COMING SOON) -->
+  <section class="py-20 border-b border-ink bg-stone-warm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
         <div>
@@ -259,7 +380,7 @@ const featuredProperties = properties.filter((p) => p.featured);
   </section>
 
   <!-- CORE CAPABILITIES (ARCHITECTURAL 3-COLUMN GRID) -->
-  <section class="py-20 bg-stone-warm border-b border-ink">
+  <section class="py-20 bg-stone-paper border-b border-ink">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mb-14">
         <p class="text-xs font-bold uppercase tracking-widest text-forest mb-2">
@@ -269,7 +390,7 @@ const featuredProperties = properties.filter((p) => p.featured);
           Built to Handle Every Side of a Real Estate Transaction
         </h2>
         <p class="text-ink-muted mt-3 text-base sm:text-lg">
-          Inspired by full-spectrum real estate developers and modernized for speed, transparency, and direct execution.
+          Whether you want maximum equity through our Flat-Fee MLS program, an immediate direct cash sale, or commercial acquisition support.
         </p>
       </div>
 
@@ -281,7 +402,7 @@ const featuredProperties = properties.filter((p) => p.featured);
                 <span class="font-display text-3xl font-extrabold text-forest">
                   {item.number}
                 </span>
-                <span class="text-xs font-bold uppercase tracking-wider bg-stone-paper px-3 py-1 border border-ink">
+                <span class="text-xs font-bold uppercase tracking-wider bg-stone-warm px-3 py-1 border border-ink">
                   {item.audience}
                 </span>
               </div>
@@ -314,22 +435,22 @@ const featuredProperties = properties.filter((p) => p.featured);
   </section>
 
   <!-- QUICK DIRECT INQUIRY SECTION -->
-  <section class="py-20 bg-stone-paper">
+  <section class="py-20 bg-stone-warm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="border-2 border-ink bg-white p-8 sm:p-12 shadow-[8px_8px_0px_0px_#163024] grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-6 space-y-4">
           <span class="text-xs font-bold uppercase tracking-widest text-forest bg-forest-tint px-3 py-1 border border-forest">
-            Direct Response
+            Direct Response • {siteInfo.shortGroup}
           </span>
           <h2 class="font-display text-3xl font-extrabold text-ink tracking-tight">
-            Have a Property to Sell or Looking for Something Specific?
+            Ready to Keep More of Your Equity or Browse Properties?
           </h2>
           <p class="text-ink-muted text-sm sm:text-base leading-relaxed">
-            Tell us what you need—whether it’s a no-obligation cash offer on a house you own, a family home in a specific neighborhood, or a commercial parcel. We respond within 24 hours.
+            Reach out directly to discuss listing your home for a flat fee, getting an as-is cash offer, or finding your next residential or commercial property in Tampa Bay.
           </p>
           <div class="pt-2 space-y-1 text-sm">
-            <p class="font-bold text-ink">Group: <span class="text-forest">{siteInfo.groupName}</span></p>
-            <p class="text-ink-muted">Email: {siteInfo.email}</p>
+            <p class="font-bold text-ink">Call Us: <a href={`tel:${siteInfo.phone.replace(/[^0-9+]/g, '')}`} class="text-forest hover:underline">{siteInfo.phone}</a></p>
+            <p class="text-ink-muted">Email: <a href={`mailto:${siteInfo.email}`} class="underline">{siteInfo.email}</a></p>
           </div>
         </div>
 
@@ -350,7 +471,7 @@ const featuredProperties = properties.filter((p) => p.featured);
               type="text"
               name="contact"
               required
-              placeholder="(555) 000-0000"
+              placeholder="(727) 000-0000"
               class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
             />
           </div>
@@ -360,10 +481,10 @@ const featuredProperties = properties.filter((p) => p.featured);
               name="interest"
               class="w-full px-4 py-3 bg-stone-paper border border-ink text-sm focus:outline-none focus:ring-2 focus:ring-forest"
             >
-              <option value="sell">I want a cash offer / to sell my property</option>
+              <option value="sell">Flat-Fee Full-Service Home Listing (Keep More Equity)</option>
+              <option value="cash">Direct As-Is Cash Offer on My Property</option>
               <option value="buy">I am looking to buy or rent a home</option>
-              <option value="invest">I am interested in commercial / investment deals</option>
-              <option value="joint-venture">Land development / Joint Venture partnership</option>
+              <option value="invest">Commercial / Investment / Land Partnership</option>
             </select>
           </div>
           <div class="sm:col-span-2">
